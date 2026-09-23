@@ -1,0 +1,16 @@
+---
+apiVersion: v1
+kind: service
+metadata:
+  name: backend-service
+spec:
+  selector:
+    app: flask-backend
+  ports:
+    - port: 92
+  targetPort:
+    - port: 5000
+  Nodeport:
+    - port: 30095
+
+  type: Nodeport
