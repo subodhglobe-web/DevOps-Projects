@@ -1,0 +1,100 @@
+.calculator {
+  width: 100%;
+  max-width: 380px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 28px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: var(--surface);
+  box-sizing: border-box;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  text-align: left;
+}
+
+.field label {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-h);
+}
+
+.field input,
+.field select {
+  font: inherit;
+  font-size: 16px;
+  padding: 10px 12px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--bg);
+  color: var(--text-h);
+}
+
+.field input:focus-visible,
+.field select:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 1px;
+  border-color: var(--accent-border);
+}
+
+.field input:disabled,
+.field select:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.calculator > button {
+  font: inherit;
+  font-size: 16px;
+  font-weight: 600;
+  padding: 11px 16px;
+  border: none;
+  border-radius: 8px;
+  color: white;
+  background: var(--accent);
+  cursor: pointer;
+  transition: opacity 0.15s ease;
+}
+
+.calculator > button:hover:not(:disabled) {
+  opacity: 0.9;
+}
+
+.calculator > button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.calculator-status:empty {
+  display: none;
+}
+
+.message {
+  margin: 0;
+  padding: 10px 12px;
+  border-radius: 8px;
+  font-size: 14px;
+  line-height: 140%;
+}
+
+.message-error {
+  color: var(--danger);
+  background: var(--danger-bg);
+}
+
+.message-result {
+  color: var(--text-h);
+  background: var(--accent-bg);
+}
+
+@media (max-width: 480px) {
+  .calculator {
+    padding: 20px;
+    border-radius: 8px;
+  }
+}

@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: frontend-service
+spec:
+  type: ClusterIP # Optimised for Ingress routing
+  selector:
+    app: frontend
+  ports:
+    - protocol: TCP
+      port: 80       # The port the Ingress will target
+      targetPort: 80 # The port your container listens on
+

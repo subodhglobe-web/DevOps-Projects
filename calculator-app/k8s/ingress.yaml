@@ -1,0 +1,28 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: calculator-ingress
+  annotations:
+    kubernetes.io/ingress.class: "nginx"
+    # Rewrites /api/users to /users before hitting the Node.js backend
+    nginx.ingress.kubernetes.io/rewrite-target: /$1
+spec:
+  ingressClassName: nginx
+  rules:
+  - http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: frontend-service
+            port:
+              number: 80
+      - path: /api/?(.*)
+        pathType: ImplementationSpecific # 🟢 Fixed: Changed from Prefix to work with regex
+        backend:
+          service:
+            name: backend-service
+            port:
+              number: 5000
+

@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: backend-deployment
+  labels:
+    app: backend
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: backend
+  template:
+    metadata:
+      labels:
+        app: backend
+    spec:
+      containers:
+      - name: backend
+        # Replace with your actual Docker Hub or AWS ECR image URI
+        image: subodh009/calculator-backend:v1
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 8080 # Make sure this matches the hardcoded port in your Node.js code
+        resources:
+          requests:
+            memory: "128Mi"
+            cpu: "200m"
+          limits:
+            memory: "256Mi"
+            cpu: "500m"

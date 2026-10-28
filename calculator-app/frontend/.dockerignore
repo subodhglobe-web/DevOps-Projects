@@ -1,0 +1,23 @@
+# Dependencies and build output (reinstalled/rebuilt inside the image)
+node_modules
+dist
+coverage
+
+# Local dev environment - deliberately excluded so the production build
+# does NOT bake in VITE_API_BASE_URL=http://localhost:8080. Without it,
+# calculatorApi.ts falls back to a relative path that Nginx proxies to the
+# backend container instead.
+.env
+.env.*
+
+# Version control
+.git
+.gitignore
+
+# IDE / OS
+.vscode
+.idea
+.DS_Store
+
+# Docs
+*.md
